@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View _view) {
 
-//                Intent intl = new Intent(getApplicationContext(), nuevoProyecto.class);
-//
-//                //intl.putExtra("texto", tt);
-//
-//                startActivity(intl);
-//                Toast.makeText(getApplicationContext(),
-//                        "El boton si está funcionando", Toast.LENGTH_LONG).show();
+                Intent intl = new Intent(getApplicationContext(), nuevoProyecto.class);
+
+                //intl.putExtra("texto", tt);
+
+                startActivity(intl);
+                Toast.makeText(getApplicationContext(),
+                        "El boton si está funcionando", Toast.LENGTH_LONG).show();
 
             }
         });

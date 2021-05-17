@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/menu_intro"
+    android:title="Introducción"
+    android:icon="@drawable/ic_intro_foreground"/>
+    <item android:id="@+id/menu_body"
+        android:title="Cuerpo"
+        android:icon="@drawable/ic_body_foreground"/>
+    <item android:id="@+id/menu_conclu"
+        android:title="Conclusión"
+        android:icon="@drawable/ic_conclu_foreground"/>
+</menu>

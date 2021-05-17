@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IngeWord"
         android:usesCleartextTraffic="true">
-        <activity android:name=".editar"></activity>
+        <activity android:name=".nuevoProyecto"></activity>
+        <activity android:name=".main_proyect" />
+        <activity android:name=".editar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
