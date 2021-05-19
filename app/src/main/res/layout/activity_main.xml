@@ -12,13 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        android:background="#2196F3"
         android:text="Crear un Proyecto..."
         android:textSize="15sp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="cambia tu lexico"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:text="Modo libre - Cámbia tu léxico"
         android:textSize="20sp"/>
 
 
@@ -45,7 +49,7 @@
                 android:gravity="top"
                 android:hint="Escribe un solo parrafo"
                 android:padding="50dp"
-                android:textColor="#ffffff"
+                android:textColor="#1B1B1B"
                 android:textColorHint="#607D8B"
                 android:textSize="12sp"
                 android:autofillHints=""
@@ -61,6 +65,7 @@
         android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="right"
         android:layout_marginTop="-85dp"
         android:orientation="horizontal"
         android:padding="8dp">
@@ -71,24 +76,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:padding="8dp"
+android:background="#BF5636"
             android:text="modo extremo"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
-        <Button
-            android:id="@+id/btnnormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:padding="8dp"
-            android:text="modo normal"
-            android:textColor="#000000"
-            android:textSize="12sp" />
+
         <Button
             android:id="@+id/btnmanual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:padding="8dp"
+            android:background="#34C53A"
             android:text="modo manual"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />

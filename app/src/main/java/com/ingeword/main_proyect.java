@@ -5,11 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ingeword.fragments.conclusionFragment;
+import com.ingeword.fragments.cuerpoFragment;
 import com.ingeword.fragments.introFragment;
 
 public class main_proyect extends AppCompatActivity {
@@ -27,18 +32,18 @@ public class main_proyect extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if(item.getItemId() == R.id.menu_intro){
+                if(item.getItemId() == R.id.menu_intro) {
                     showSelectedFragment(new introFragment());
-                    Toast.makeText(getApplicationContext(),
-                        "Estas en la ventana de la introduccion", Toast.LENGTH_SHORT).show(); }
-                if(item.getItemId() == R.id.menu_body){
 
-                    Toast.makeText(getApplicationContext(),
-                            "Estas en la ventana del cuerpo", Toast.LENGTH_SHORT).show();
+
+                }
+                if(item.getItemId() == R.id.menu_body){
+                    showSelectedFragment(new cuerpoFragment());
+
                 }
                 if(item.getItemId() == R.id.menu_conclu){
-                    Toast.makeText(getApplicationContext(),
-                            "Estas en la ventana de la conclusion", Toast.LENGTH_SHORT).show();
+                    showSelectedFragment(new conclusionFragment());
+
 
                 }
 

@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.Normalizer;
 
 public class editar extends AppCompatActivity {
 
@@ -30,12 +31,18 @@ public class editar extends AppCompatActivity {
     private Button button1;
     static int numBotones = 0;
     static String parrafo = "";
+    static int pivo = 0;
+    static int pivot = 0;
 
     private String nuevoparrafo="";
     private Intent inten = new Intent();
     private Button boton;
     int cantidadpalabras = 0;
     String temp[];
+
+
+
+
 
     private String buscar_sinonimos(String palabra) throws Exception {
 
@@ -79,9 +86,10 @@ public class editar extends AppCompatActivity {
 
             // si una palabra no cuenta con un solo sinonimo solo se tomara la palabta normal y se agrefara a la cadena
 
-            if(sin[5] == null){
-//                Toast.makeText(getApplicationContext(),
-//                        "La palabra no tiene sinonimos", Toast.LENGTH_SHORT).show();
+            if(sin[2].equals( ":{}}")){
+                Toast.makeText(getApplicationContext(),
+                        "la palabra que no cuenta con sinonimos es:  " + wordToSearch, Toast.LENGTH_SHORT).show();
+//                pivo = 1;
 
                 cadena = wordToSearch;
             }else{
@@ -105,7 +113,23 @@ public class editar extends AppCompatActivity {
         return cadena;
 
     }
+//private String cambioCadena(String cadena){
+//String palabra;
+//    String cadenanueva[];
+//    cadenanueva = cadena.split(" ");
+//
+//
+//    for(int i = 0; i<cadenanueva.length; i++){
+//
+//        palabra =   cadenanueva[i];
+//
+//
+//    }
 
+
+
+
+//}
     private void cabio(int index, String palabra){
         //aqui wa obtener la palabra que se esta usando y el numero del array en el que se va a almacenar para que siga teniendo coherencia
         //lo escrito
@@ -139,6 +163,12 @@ public class editar extends AppCompatActivity {
 
         String pa ="";
         pa = recibirTexto();
+
+
+        String cadenaNormalize = Normalizer.normalize(pa, Normalizer.Form.NFD);
+       pa = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+
+
         String palabra = null;
         String palabraBase = null;
 
@@ -179,35 +209,35 @@ public class editar extends AppCompatActivity {
                 llBotonera.addView(button);
 
 
-            }else{
-                try {
+            }else {
+
+                    try {
 
 
+                        te.setText(temp[i - 1]);
 
+                        palabra = buscar_sinonimos(temp[i - 1]);
+                        palabraBase = temp[i - 1];
 
-                    te.setText(temp[i-1]);
+                        tes.setText(palabra);
 
-                    palabra = buscar_sinonimos(temp[i-1]);
-                    palabraBase = temp[i-1];
+                        button.setText("Haz seleccionado la palabra: " + palabraBase);
 
-                    tes.setText(palabra);
-
-                    button.setText("Haz seleccionado la palabra: "+palabraBase);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 //Asignamos Texto al botón
 
 
-                //Añadimos el botón a la botonera
+                    //Añadimos el botón a la botonera
 
-                llBotonera.addView(te);
-                llBotonera.addView(tes);
-                llBotonera.addView(button);
-            }
+                    llBotonera.addView(te);
+                    llBotonera.addView(tes);
+                    llBotonera.addView(button);
+                }
 
-            button.setOnClickListener(new ButtonsOnClickListener(this, i, palabra,palabraBase));
+            button.setOnClickListener(new ButtonsOnClickListener(this, i, palabra,palabraBase,pivot));
+            pivot = 0;
         }
 
     }
@@ -219,12 +249,14 @@ public class editar extends AppCompatActivity {
         int numButton;
         String palabra;
         String palabraBase;
+        int pivor;
 
-        public ButtonsOnClickListener(Context context, int numButton, String palabra, String palabraBase) {
+        public ButtonsOnClickListener(Context context, int numButton, String palabra, String palabraBase, int pivor) {
             this.context = context;
             this.numButton = numButton;
             this.palabra = palabra;
             this.palabraBase = palabraBase;
+            this.pivor = pivor;
         }
 
         @Override
@@ -232,58 +264,67 @@ public class editar extends AppCompatActivity {
         {
 
             TextView teee = (TextView) v;
-            if(numButton!=0){
 
-                if(pin == 0){
-                    pin =1;
+            if(pivor == 1){  //esta palabra no tiene sinonumos
+//                if(pivor ==1){ teee.setText("la palabra: " + palabraBase +" no cuenta con un sinonimo"); pivor = 0; pivot = 0;}
+//
 
-                    teee.setText("Haz seleccionado: " + palabra);
+
+
+                  }else {
+                if (numButton != 0) {
+
+                    if (pin == 0) {
+                        pin = 1;
+
+                        teee.setText("Haz seleccionado: " + palabra);
+
 //        Toast.makeText(getApplicationContext(),
 //                "EL PARRAFO nuevo DICE: ", Toast.LENGTH_SHORT).show();
-                    cabio(numButton,palabra);
+                        cabio(numButton, palabra);
 
-                }else if(pin == 1){
-                    pin =0;
-                    teee.setText("Haz seleccionado: " + palabraBase);
-
-
-                    cabio(numButton,palabraBase);
-                    // aqui voy a obtener una funcion que va a recibir los datos de la palabra que estamos modificando es decir el numbutton
-                    //en la funcion que aun no esta creada recibiré el index para usarlo con el parrafo original el cual estará segmentado por palabras
-                    //mediante un split de esta forma
-                    //parrafo[numbutton]
-                    //funccion camb(numButton){ parrafo[numButton] =    }
-
-                }
-
-            }else{
-                String nuevo ="";
+                    } else if (pin == 1) {
+                        pin = 0;
+                        teee.setText("Haz seleccionado: " + palabraBase);
+//                        if(pivor ==1){ teee.setText("la palabra: " + palabraBase +" no cuenta con un sinonimo"); pivot = 0;}
 
 
-                for(int i = 0; i<temp.length; i++){
+                        cabio(numButton, palabraBase);
+                        // aqui voy a obtener una funcion que va a recibir los datos de la palabra que estamos modificando es decir el numbutton
+                        //en la funcion que aun no esta creada recibiré el index para usarlo con el parrafo original el cual estará segmentado por palabras
+                        //mediante un split de esta forma
+                        //parrafo[numbutton]
+                        //funccion camb(numButton){ parrafo[numButton] =    }
 
-                    nuevo = nuevo +temp[i] + " ";
+                    }
 
-                }
+                } else {
+                    String nuevo = "";
+
+
+                    for (int i = 0; i < temp.length; i++) {
+
+                        nuevo = nuevo + temp[i] + " ";
+
+                    }
 //
 //    Toast.makeText(getApplicationContext(),
 //            "el texto nuevo es: ", Toast.LENGTH_SHORT).show();
 //    Toast.makeText(getApplicationContext(),
 //            nuevo, Toast.LENGTH_SHORT).show();
 
-                String tt = nuevo;
+                    String tt = nuevo;
 //    Toast.makeText(getApplicationContext(),
 //            "hhhhhhhhhhhh: "+tt, Toast.LENGTH_SHORT).show();
-                Intent intl = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intl = new Intent(getApplicationContext(), MainActivity.class);
 
-                intl.putExtra("texto", tt);
+                    intl.putExtra("texto", tt);
 
-                startActivity(intl);
+                    startActivity(intl);
 
 
-
+                }
             }
-
 
 
 

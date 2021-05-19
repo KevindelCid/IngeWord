@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Cambia el lexico en tu introducción"
+            android:text="Cambia el lexico tu conclución"
             android:textSize="20sp"/>
 
 

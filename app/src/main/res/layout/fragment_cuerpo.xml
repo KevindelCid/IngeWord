@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Cambia el lexico en tu introducción"
-            android:textSize="20sp"/>
+            android:text="Cambia el lexico de el cuerpo de tu trabajo"
+            android:textSize="17sp"/>
 
 
         <ScrollView

@@ -7,17 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.ingeword.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link introFragment#newInstance} factory method to
+ * Use the {@link conclusionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class introFragment extends Fragment {
+public class conclusionFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,10 +25,8 @@ public class introFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Button nuevo;
-    View vista;
 
-    public introFragment() {
+    public conclusionFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +36,11 @@ public class introFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment introFragment.
+     * @return A new instance of fragment conclusionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static introFragment newInstance(String param1, String param2) {
-        introFragment fragment = new introFragment();
+    public static conclusionFragment newInstance(String param1, String param2) {
+        conclusionFragment fragment = new conclusionFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,11 +54,6 @@ public class introFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
-
-
-
-
         }
     }
 
@@ -70,20 +61,6 @@ public class introFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        vista = inflater.inflate(R.layout.fragment_intro, container, false);
-        nuevo = (Button) vista.findViewById(R.id.btnguardarintro);
-
-
-        nuevo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),
-                        "se pucho el btn de guardar del fragment intro", Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-        return vista;
+        return inflater.inflate(R.layout.fragment_conclusion, container, false);
     }
 }
