@@ -1,33 +1,26 @@
 package com.ingeword;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.Normalizer;
 
-public class editar extends AppCompatActivity {
+public class editar_intro_activity extends AppCompatActivity {
+
 
 
 
@@ -45,8 +38,6 @@ public class editar extends AppCompatActivity {
     private Button boton;
     int cantidadpalabras = 0;
     String temp[];
-
-
 
 
 
@@ -103,13 +94,6 @@ public class editar extends AppCompatActivity {
                 cadena =sin[5];
             }
 
-
-
-
-
-
-
-
         }
 
 
@@ -119,23 +103,7 @@ public class editar extends AppCompatActivity {
         return cadena;
 
     }
-//private String cambioCadena(String cadena){
-//String palabra;
-//    String cadenanueva[];
-//    cadenanueva = cadena.split(" ");
-//
-//
-//    for(int i = 0; i<cadenanueva.length; i++){
-//
-//        palabra =   cadenanueva[i];
-//
-//
-//    }
 
-
-
-
-//}
     private void cabio(int index, String palabra){
         //aqui wa obtener la palabra que se esta usando y el numero del array en el que se va a almacenar para que siga teniendo coherencia
         //lo escrito
@@ -160,9 +128,14 @@ public class editar extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_editar_intro_activity);
+
+
+
 
 
 
@@ -172,7 +145,7 @@ public class editar extends AppCompatActivity {
 
 
         String cadenaNormalize = Normalizer.normalize(pa, Normalizer.Form.NFD);
-       pa = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
+        pa = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
 
 
         String palabra = null;
@@ -217,36 +190,36 @@ public class editar extends AppCompatActivity {
 
             }else {
 
-                    try {
+                try {
 
 
-                        te.setText(temp[i - 1]);
+                    te.setText(temp[i - 1]);
 
-                        palabra = buscar_sinonimos(temp[i - 1]);
-                        palabraBase = temp[i - 1];
+                    palabra = buscar_sinonimos(temp[i - 1]);
+                    palabraBase = temp[i - 1];
 
-                        tes.setText(palabra);
+                    tes.setText(palabra);
 
-                        button.setText("Haz seleccionado la palabra: " + palabraBase);
+                    button.setText("Haz seleccionado la palabra: " + palabraBase);
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 //Asignamos Texto al botón
 
 
-                    //Añadimos el botón a la botonera
+                //Añadimos el botón a la botonera
 
-                    llBotonera.addView(te);
-                    llBotonera.addView(tes);
-                    llBotonera.addView(button);
-                }
+                llBotonera.addView(te);
+                llBotonera.addView(tes);
+                llBotonera.addView(button);
+            }
 
             button.setOnClickListener(new ButtonsOnClickListener(this, i, palabra,palabraBase,pivot));
             pivot = 0;
         }
-
     }
+
 
     class ButtonsOnClickListener implements View.OnClickListener
     {
@@ -277,7 +250,7 @@ public class editar extends AppCompatActivity {
 
 
 
-                  }else {
+            }else {
                 if (numButton != 0) {
 
                     if (pin == 0) {
@@ -323,7 +296,7 @@ public class editar extends AppCompatActivity {
 //    Toast.makeText(getApplicationContext(),
 //            "hhhhhhhhhhhh: "+tt, Toast.LENGTH_SHORT).show();\
 
-                    Intent intl = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intl = new Intent(getApplicationContext(), introduccion_activity.class);
 
                     intl.putExtra("texto", tt);
 
@@ -340,4 +313,6 @@ public class editar extends AppCompatActivity {
 
         }
     };
+
+
 }

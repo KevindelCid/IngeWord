@@ -30,7 +30,7 @@ public class nuevoProyecto extends AppCompatActivity {
             @Override
             public void onClick(View _view) {
 
-                Intent intl = new Intent(getApplicationContext(), main_proyect.class);
+                Intent intl = new Intent(getApplicationContext(), introduccion_activity.class);
 
 //                intl.putExtra("texto", tt);
 

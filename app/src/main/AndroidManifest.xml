@@ -3,6 +3,7 @@
     package="com.ingeword">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IngeWord"
         android:usesCleartextTraffic="true">
-        <activity android:name=".nuevoProyecto"></activity>
+        <activity android:name=".abrir_proyecto"></activity>
+        <activity android:name=".editar_conclu_activity" />
+        <activity android:name=".editar_cuerpo_activity" />
+        <activity android:name=".editar_intro_activity" />
+        <activity android:name=".conclusion_activity" />
+        <activity android:name=".cuerpo_activity" />
+        <activity android:name=".introduccion_activity" />
+        <activity android:name=".nuevoProyecto" />
         <activity android:name=".main_proyect" />
         <activity android:name=".editar" />
         <activity android:name=".MainActivity">

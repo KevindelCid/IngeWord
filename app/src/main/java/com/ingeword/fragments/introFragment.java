@@ -2,12 +2,15 @@ package com.ingeword.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ingeword.R;
@@ -29,6 +32,21 @@ public class introFragment extends Fragment {
     private String mParam2;
     Button nuevo;
     View vista;
+    EditText tx;
+
+
+
+//    private String recibirTexto(){
+//        Bundle ex = getIntent().getExtras();
+//        String texto = ex.getString("texto");
+//
+//        Toast.makeText(getContext(),
+//                "EL PARRAFO DICE: "+texto, Toast.LENGTH_SHORT).show();
+//
+//        return texto;
+//    }
+
+
 
     public introFragment() {
         // Required empty public constructor
@@ -62,7 +80,6 @@ public class introFragment extends Fragment {
 
 
 
-
         }
     }
 
@@ -73,6 +90,9 @@ public class introFragment extends Fragment {
 
         vista = inflater.inflate(R.layout.fragment_intro, container, false);
         nuevo = (Button) vista.findViewById(R.id.btnguardarintro);
+        tx = (EditText) vista.findViewById(R.id.txv);
+
+
 
 
         nuevo.setOnClickListener(new View.OnClickListener() {
@@ -80,10 +100,34 @@ public class introFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getContext(),
                         "se pucho el btn de guardar del fragment intro", Toast.LENGTH_LONG).show();
+
+
+
             }
         });
 
 
+
+
+
+
         return vista;
+    }
+
+
+
+
+
+
+
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+
     }
 }
