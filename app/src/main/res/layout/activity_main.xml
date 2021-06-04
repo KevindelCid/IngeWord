@@ -22,7 +22,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:layout_marginLeft="10dp"
-        android:text="Modo libre - Cámbia tu léxico"
+        android:text="Modo libre - Cambia tu léxico"
         android:textSize="20sp"/>
 
 
@@ -75,9 +75,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:background="#BF5636"
+            android:onClick="abrir"
             android:padding="8dp"
-android:background="#BF5636"
-            android:text="modo extremo"
+            android:text="Abrir un proyecto"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
 

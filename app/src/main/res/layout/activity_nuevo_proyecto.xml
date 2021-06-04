@@ -19,8 +19,12 @@
             android:id="@+id/btnnuevop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Listo"
-            android:layout_gravity="right"
+            android:text="Crear Proyecto nuevo"
+
+
+            android:textColor="#FFFFFF"
+           android:background="#8BC34A"
+
             />
 
         <TextView
@@ -28,42 +32,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingresa los datos para tu proyecto"
+            android:textSize="28sp"
             android:layout_marginTop="100px"
-            android:layout_marginLeft="5dp"
+            android:gravity="center"
             />
+
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/proyectname"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:hint="Nombre de tu Proyecto"
-            android:layout_gravity="center"
+
             android:layout_marginTop="100px"
             />
+
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/titulotrab"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tu nombre completo"
-            android:layout_gravity="center"
-            android:layout_marginTop="40px"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Tu correo electrónico"
-            android:layout_gravity="center"
-            android:layout_marginTop="40px"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Nombre del catedrático o asesor"
-            android:layout_gravity="center"
-            android:layout_marginTop="40px"
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:gravity="center"
             android:hint="Titulo del trabajo"
-            android:layout_gravity="center"
+
+            android:layout_marginTop="40px"
+            />
+
+        <EditText
+            android:id="@+id/nombreus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:hint="Tu nombre completo"
+
+            android:layout_marginTop="40px"
+            />
+        <EditText
+            android:id="@+id/contacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Lugar"
+
+            android:layout_marginTop="40px"
+            />
+        <EditText
+            android:id="@+id/catedratico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Nombre del catedrático o asesor"
+
             android:layout_marginTop="40px"
             />
 

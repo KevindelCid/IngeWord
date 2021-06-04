@@ -7,19 +7,20 @@
     android:orientation="vertical"
     >
 
-    <Button
-        android:id="@+id/btnnp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textColor="#FFFFFF"
-        android:background="#2196F3"
-        android:text="Crear un Proyecto..."
-        android:textSize="15sp"/>
     <TextView
+        android:id="@+id/namecu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:text=""
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:layout_marginLeft="10dp"
         android:text="Cuerpo"
@@ -55,6 +56,16 @@
                 android:textColorHint="#607D8B"
 
                 android:textSize="25px" />
+            <TextView
+                android:id="@+id/printroc"
+                android:textColor="#2196F3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="right"
+                android:layout_marginLeft="14dp"
+                android:text="Referencia"
+                android:textSize="14sp"/>
 
 
         </LinearLayout>
@@ -71,11 +82,22 @@
         android:padding="8dp">
 
         <Button
+            android:id="@+id/btnref"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="#764CD6"
+            android:onClick="guardar_referencia"
+            android:padding="8dp"
+            android:text="Guardar referencia"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+        <Button
             android:id="@+id/btnextremo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="#BF5636"
+            android:background="#289F5E"
             android:onClick="guardar"
             android:padding="8dp"
             android:text="Guardar"
@@ -88,8 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:padding="8dp"
-            android:background="#34C53A"
-            android:text="modo manual"
+            android:background="#B8863B"
+            android:text="Cambiar el Léxico"
             android:textColor="#FFFFFF"
             android:textSize="12sp" />
 

@@ -10,6 +10,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -22,15 +23,36 @@ public class cuerpo_activity extends AppCompatActivity {
 
     EditText edte;
     Button btnintro, cu, co;
+    TextView name, printro;
+    @Override
+    public void onBackPressed(){
 
 
+
+
+        Intent intl = new Intent(getApplicationContext(), introduccion_activity.class);
+        guarda();
+        intl.putExtra("nombreProyecto", proyectname());
+        startActivity(intl);
+
+
+    }
+
+
+    private String recibirPivote(){
+
+        Bundle ex = getIntent().getExtras();
+        String texto = ex.getString("pivote");
+
+
+
+        return texto;
+    }
 
     private String recibirTexto(){
         Bundle ex = getIntent().getExtras();
         String texto = ex.getString("texto");
 
-        Toast.makeText(getApplicationContext(),
-                "EL PARRAFO DICE: "+texto, Toast.LENGTH_SHORT).show();
 
         return texto;
     }
@@ -39,6 +61,31 @@ public class cuerpo_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cuerpo_activity);
+
+
+
+
+
+
+        printro = findViewById(R.id.printroc);
+
+
+        printro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intl = new Intent(cuerpo_activity.this, antescuerpo.class);
+                intl.putExtra("nombreProyecto", proyectname());
+                startActivity(intl);
+//
+//                startActivity(new Intent(introduccion_activity.this,antesIntro.class));
+
+
+            }
+        });
+
+
+
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
@@ -56,39 +103,46 @@ public class cuerpo_activity extends AppCompatActivity {
         btnintro = (Button ) findViewById(R.id.intro);
         cu = (Button ) findViewById(R.id.cuerpo);
         co = (Button ) findViewById(R.id.conclucion);
+        name = (TextView) findViewById(R.id.namecu);
+        name.setText(proyectname());
         cu.setEnabled(false);
         cu.setBackgroundColor(Color.GRAY);
         String archivos [] =fileList();
+        String p ;
+        p = recibirPivote();
 
 
-        if(ArchivoExiste(archivos,"cuerpo.txt")){
-            try {
-                InputStreamReader archivo = new InputStreamReader(openFileInput("cuerpo.txt"));
-                BufferedReader br = new BufferedReader(archivo);
-                String linea = br.readLine();
-                String introduccion = "";
+        if(p != null) {
+            edte.setText(recibirTexto());
 
-                while(linea != null){
-                    introduccion = introduccion + linea +"\n";
-                    linea = br.readLine();
+        }else {
+
+
+            if (ArchivoExiste(archivos, proyectname() + "_cuerpo.txt")) {
+                try {
+                    InputStreamReader archivo = new InputStreamReader(openFileInput(proyectname() + "_cuerpo.txt"));
+                    BufferedReader br = new BufferedReader(archivo);
+                    String linea = br.readLine();
+                    String introduccion = "";
+
+                    while (linea != null) {
+                        introduccion = introduccion + linea + "\n";
+                        linea = br.readLine();
+
+                    }
+                    br.close();
+                    archivo.close();
+                    edte.setText(introduccion);
+
+                } catch (IOException e) {
 
                 }
-                br.close();
-                archivo.close();
-                edte.setText(introduccion);
 
-            }catch (IOException e){
 
             }
-            try {
-                edte.setText(recibirTexto());
-            }catch (Exception e) {}
 
 
         }
-
-
-
 
         Button bmanual = (Button) findViewById(R.id.btm);
 
@@ -102,6 +156,7 @@ public class cuerpo_activity extends AppCompatActivity {
 
                 Intent intl = new Intent(getApplicationContext(), editar_cuerpo_activity.class);
 
+                intl.putExtra("nombreProyecto", proyectname());
                 intl.putExtra("texto", tt);
 
                 startActivity(intl);
@@ -126,7 +181,7 @@ public class cuerpo_activity extends AppCompatActivity {
     public void guardar(View view){
         try {
             OutputStreamWriter archivo = new OutputStreamWriter(
-                    openFileOutput("cuerpo.txt", Activity.MODE_PRIVATE));
+                    openFileOutput(proyectname()+"_cuerpo.txt", Activity.MODE_PRIVATE));
             archivo.write(edte.getText().toString());
             archivo.flush();
             archivo.close();
@@ -141,7 +196,7 @@ public class cuerpo_activity extends AppCompatActivity {
     public void guarda(){
         try {
             OutputStreamWriter archivo = new OutputStreamWriter(
-                    openFileOutput("cuerpo.txt", Activity.MODE_PRIVATE));
+                    openFileOutput(proyectname()+"_cuerpo.txt", Activity.MODE_PRIVATE));
             archivo.write(edte.getText().toString());
             archivo.flush();
             archivo.close();
@@ -149,16 +204,27 @@ public class cuerpo_activity extends AppCompatActivity {
         }catch (IOException e){
 
         }
-        Toast.makeText(this,"Cuerpo Guardado", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,"Cuerpo Guardado", Toast.LENGTH_SHORT).show();
 
     }
 
 
 
+    private String proyectname(){
+        Bundle ex = getIntent().getExtras();
+        String texto = ex.getString("nombreProyecto");
+
+//        Toast.makeText(getApplicationContext(),
+//                "EL PARRAFO DICE: "+texto, Toast.LENGTH_SHORT).show();
+
+        return texto;
+    }
+
     public void introbb(View view){
 
         Intent intl = new Intent(getApplicationContext(), introduccion_activity.class);
-
+        guarda();
+        intl.putExtra("nombreProyecto", proyectname());
         startActivity(intl);
 
 
@@ -166,6 +232,7 @@ public class cuerpo_activity extends AppCompatActivity {
     public void cuerpobb (View view){
 
         Intent intl = new Intent(getApplicationContext(), cuerpo_activity.class);
+        intl.putExtra("nombreProyecto", proyectname());
         guarda();
         startActivity(intl);
 
@@ -174,13 +241,28 @@ public class cuerpo_activity extends AppCompatActivity {
     public void conclubb (View view){
 
         Intent intl = new Intent(getApplicationContext(), conclusion_activity.class);
+        intl.putExtra("nombreProyecto", proyectname());
         guarda();
         startActivity(intl);
 
 
     }
+    public void guardar_referencia (View view) {
+
+        try {
+            OutputStreamWriter archivo = new OutputStreamWriter(
+                    openFileOutput(proyectname() + "_ref_cuerpo.txt", Activity.MODE_PRIVATE));
+            archivo.write(edte.getText().toString());
+            archivo.flush();
+            archivo.close();
+
+            Toast.makeText(this, "Se guardó el punto de referencia", Toast.LENGTH_SHORT).show();
 
 
+        } catch (IOException e) {
+
+        }
+    }
 
 
 }

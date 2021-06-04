@@ -41,6 +41,17 @@ public class editar_intro_activity extends AppCompatActivity {
 
 
 
+    private String recibirpro(){
+
+        Bundle ex = getIntent().getExtras();
+        String texto = ex.getString("nombreProyecto");
+
+
+
+        return texto;
+    }
+
+
     private String buscar_sinonimos(String palabra) throws Exception {
 
         String sinonims1 = null;
@@ -84,9 +95,9 @@ public class editar_intro_activity extends AppCompatActivity {
             // si una palabra no cuenta con un solo sinonimo solo se tomara la palabta normal y se agrefara a la cadena
 
             if(sin[2].equals( ":{}}")){
-                Toast.makeText(getApplicationContext(),
-                        "la palabra que no cuenta con sinonimos es:  " + wordToSearch, Toast.LENGTH_SHORT).show();
-//                pivo = 1;
+//                Toast.makeText(getApplicationContext(),
+//                        "la palabra que no cuenta con sinonimos es:  " + wordToSearch, Toast.LENGTH_SHORT).show();
+////                pivo = 1;
 
                 cadena = wordToSearch;
             }else{
@@ -181,7 +192,7 @@ public class editar_intro_activity extends AppCompatActivity {
             button.setLayoutParams(lp);
 
             if(i ==0){
-                te.setText("Presiona el boton correspondiente a cada palabra para navegar entre el sinonimo y la palabra original");
+                te.setText("Presiona el botón correspondiente a cada palabra para navegar entre el sinónimo y la palabra original");
                 button.setText("Confirmar Cambios");
                 button.setBackgroundColor(Color.CYAN);
                 llBotonera.addView(te);
@@ -200,7 +211,7 @@ public class editar_intro_activity extends AppCompatActivity {
 
                     tes.setText(palabra);
 
-                    button.setText("Haz seleccionado la palabra: " + palabraBase);
+                    button.setText("Has seleccionado la palabra: " + palabraBase);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -299,6 +310,9 @@ public class editar_intro_activity extends AppCompatActivity {
                     Intent intl = new Intent(getApplicationContext(), introduccion_activity.class);
 
                     intl.putExtra("texto", tt);
+                    intl.putExtra("pivote", "coso");
+                    intl.putExtra("nombreProyecto", proyectname());
+
 
                     startActivity(intl);
 
@@ -313,6 +327,13 @@ public class editar_intro_activity extends AppCompatActivity {
 
         }
     };
+    private String proyectname(){
+        Bundle ex = getIntent().getExtras();
+        String texto = ex.getString("nombreProyecto");
+
+
+        return texto;
+    }
 
 
 }

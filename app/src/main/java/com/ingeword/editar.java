@@ -93,9 +93,9 @@ public class editar extends AppCompatActivity {
             // si una palabra no cuenta con un solo sinonimo solo se tomara la palabta normal y se agrefara a la cadena
 
             if(sin[2].equals( ":{}}")){
-                Toast.makeText(getApplicationContext(),
-                        "la palabra que no cuenta con sinonimos es:  " + wordToSearch, Toast.LENGTH_SHORT).show();
-//                pivo = 1;
+//                Toast.makeText(getApplicationContext(),
+//                        "la palabra que no cuenta con sinonimos es:  " + wordToSearch, Toast.LENGTH_SHORT).show();
+////                pivo = 1;
 
                 cadena = wordToSearch;
             }else{
@@ -208,7 +208,7 @@ public class editar extends AppCompatActivity {
             button.setLayoutParams(lp);
 
             if(i ==0){
-                te.setText("Presiona el boton correspondiente a cada palabra para navegar entre el sinonimo y la palabra original");
+                te.setText("Presiona el botón correspondiente a cada palabra para navegar entre el sinónimo y la palabra original");
                 button.setText("Confirmar Cambios");
                 button.setBackgroundColor(Color.CYAN);
                 llBotonera.addView(te);
@@ -227,7 +227,7 @@ public class editar extends AppCompatActivity {
 
                         tes.setText(palabra);
 
-                        button.setText("Haz seleccionado la palabra: " + palabraBase);
+                        button.setText("Has seleccionado la palabra: " + palabraBase);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -239,6 +239,7 @@ public class editar extends AppCompatActivity {
 
                     llBotonera.addView(te);
                     llBotonera.addView(tes);
+                button.setBackgroundColor(Color.parseColor("#B8863B"));
                     llBotonera.addView(button);
                 }
 
