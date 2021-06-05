@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/inge"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/inge"
+
         android:supportsRtl="true"
         android:theme="@style/Theme.IngeWord"
         android:usesCleartextTraffic="true">
